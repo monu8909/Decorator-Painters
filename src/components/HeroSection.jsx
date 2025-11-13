@@ -7,14 +7,12 @@ const HeroSection = () => {
   const [videoLoaded, setVideoLoaded] = useState(false)
   const [videoError, setVideoError] = useState(false)
 
-  // Fallback image URL - Indian painter at work / wall putty work
   const fallbackImage = 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=1920&h=1080&fit=crop&q=80'
 
   const videoUrl = '../../dist/assets/vypt890qbdrma0ctfjv9v20prg_result_.mp4'
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Video/Image */}
       <div className="absolute inset-0 z-0">
           <video
             autoPlay
