@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "name": "Rajesh Kumar",
+    "location": "Mumbai, Maharashtra",
+    "rating": 5,
+    "text": "Excellent work! The POP ceiling work was done perfectly. The team was professional and completed the project on time. Highly recommended!",
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
+  },
+  {
+    "id": 2,
+    "name": "Priya Sharma",
+    "location": "Delhi, NCR",
+    "rating": 5,
+    "text": "Amazing wall putty work! Our walls look brand new. The painters were very careful with our furniture and cleaned up after themselves.",
+    "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face"
+  },
+  {
+    "id": 3,
+    "name": "Amit Patel",
+    "location": "Ahmedabad, Gujarat",
+    "rating": 5,
+    "text": "The PU polish on our furniture is outstanding! It's been 6 months and everything still looks like new. Great quality work!",
+    "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
+  },
+  {
+    "id": 4,
+    "name": "Sunita Reddy",
+    "location": "Hyderabad, Telangana",
+    "rating": 5,
+    "text": "Professional service from start to finish. They helped us choose the right colors and the final result exceeded our expectations.",
+    "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
+  },
+  {
+    "id": 5,
+    "name": "Vikram Singh",
+    "location": "Pune, Maharashtra",
+    "rating": 5,
+    "text": "Best painters in town! They transformed our entire home. The attention to detail and finish quality is remarkable.",
+    "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face"
+  },
+  {
+    "id": 6,
+    "name": "Meera Nair",
+    "location": "Bangalore, Karnataka",
+    "rating": 5,
+    "text": "Very satisfied with the interior finishing work. The team was punctual, courteous, and the work quality is top-notch.",
+    "image": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face"
+  }
+]
+
