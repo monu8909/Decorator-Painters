@@ -1,0 +1,29 @@
+{
+  "name": "decorator-and-painters",
+  "version": "1.0.0",
+  "description": "Small business website and admin backend for house decorator & painting business",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "cd server && nodemon index.js",
+    "dev:client": "cd client && npm run dev",
+    "build": "cd client && npm run build",
+    "start": "cd server && node index.js",
+    "test": "cd server && npm test",
+    "install:all": "npm install && cd client && npm install && cd ../server && npm install"
+  },
+  "keywords": [
+    "decorator",
+    "painting",
+    "booking",
+    "admin"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "framer-motion": "^12.23.24"
+  }
+}
