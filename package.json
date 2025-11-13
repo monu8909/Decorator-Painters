@@ -1,29 +1,32 @@
 {
-  "name": "decorator-and-painters",
+  "name": "decorator-frontend",
   "version": "1.0.0",
-  "description": "Small business website and admin backend for house decorator & painting business",
-  "main": "server/index.js",
+  "type": "module",
   "scripts": {
-    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
-    "dev:server": "cd server && nodemon index.js",
-    "dev:client": "cd client && npm run dev",
-    "build": "cd client && npm run build",
-    "start": "cd server && node index.js",
-    "test": "cd server && npm test",
-    "install:all": "npm install && cd client && npm install && cd ../server && npm install"
-  },
-  "keywords": [
-    "decorator",
-    "painting",
-    "booking",
-    "admin"
-  ],
-  "author": "",
-  "license": "MIT",
-  "devDependencies": {
-    "concurrently": "^8.2.2"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "framer-motion": "^12.23.24"
+    "axios": "^1.6.2",
+    "framer-motion": "^12.23.24",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.12.0",
+    "react-router-dom": "^6.20.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.3.6",
+    "vite": "^5.0.8"
   }
 }
