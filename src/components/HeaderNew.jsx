@@ -80,7 +80,6 @@ const HeaderNew = () => {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
         <motion.div
           initial={false}
           animate={{
