@@ -9,7 +9,7 @@ const HeroSection = () => {
 
   const fallbackImage = 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=1920&h=1080&fit=crop&q=80'
 
-  const videoUrl = '../../dist/assets/vypt890qbdrma0ctfjv9v20prg_result_.mp4'
+  const videoUrl = 'https://res.cloudinary.com/djdk3q33k/video/upload/v1763030010/My_wall_putty_work___wall_putty_work_movie_style___trailer_qnrofp.mp4'
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
