@@ -84,7 +84,6 @@ const Navbar = () => {
             Decorator & Painters
           </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <Link
