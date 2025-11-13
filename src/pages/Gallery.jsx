@@ -9,66 +9,108 @@ import { FiX, FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 const galleryImages = [
   {
     id: 1,
-    title: 'POP Ceiling Design',
+    title: 'Multi-Layered POP Ceiling Design',
     category: 'pop-ceiling',
     image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&h=800&fit=crop',
-    description: 'Modern POP ceiling with LED integration'
+    description: 'Geometric and organic shapes with integrated LED lighting'
   },
   {
     id: 2,
-    title: 'Wall Putty Work',
-    category: 'wall-putty',
-    image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=1200&h=800&fit=crop',
-    description: 'Smooth wall finishing ready for painting'
+    title: 'Elegant False Ceiling with Cove Lighting',
+    category: 'pop-ceiling',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&h=800&fit=crop',
+    description: 'Sophisticated multi-tiered design with warm LED strips'
   },
   {
     id: 3,
-    title: 'PU Polish Furniture',
-    category: 'pu-polish',
-    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1200&h=800&fit=crop',
-    description: 'Glossy PU polish on wooden furniture'
+    title: 'Modern POP Ceiling with Blue LED',
+    category: 'pop-ceiling',
+    image: 'https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=1200&h=800&fit=crop',
+    description: 'Contemporary design with integrated blue LED spotlights'
   },
   {
     id: 4,
-    title: 'Interior Painting',
-    category: 'interior-painting',
-    image: 'https://images.unsplash.com/photo-1560185007-c5ca9d2c014d?w=1200&h=800&fit=crop',
-    description: 'Beautiful interior color scheme'
+    title: 'Luxury Ceiling with Wood Accents',
+    category: 'pop-ceiling',
+    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1200&h=800&fit=crop',
+    description: 'White POP ceiling with brown wooden panels and cove lighting'
   },
   {
     id: 5,
-    title: 'Exterior Painting',
-    category: 'exterior-painting',
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&h=800&fit=crop',
-    description: 'Weather-resistant exterior finish'
+    title: 'Circular POP Ceiling Design',
+    category: 'pop-ceiling',
+    image: 'https://images.unsplash.com/photo-1560185007-c5ca9d2c014d?w=1200&h=800&fit=crop',
+    description: 'Concentric circular layers with central light fixture'
   },
   {
     id: 6,
-    title: 'Texture Work',
-    category: 'texture-work',
-    image: 'https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=1200&h=800&fit=crop',
-    description: 'Custom wall texture design'
+    title: 'Rectangular Recessed Ceiling',
+    category: 'pop-ceiling',
+    image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=1200&h=800&fit=crop',
+    description: 'Multi-tiered rectangular design with decorative medallion'
   },
   {
     id: 7,
-    title: 'POP Ceiling Detail',
+    title: 'Kitchen Ceiling with Integrated Lighting',
     category: 'pop-ceiling',
-    image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&h=800&fit=crop',
-    description: 'Intricate POP ceiling pattern'
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&h=800&fit=crop',
+    description: 'Modern kitchen ceiling with LED strips and recessed lights'
   },
   {
     id: 8,
-    title: 'Wall Finishing',
+    title: 'Wall Putty Application',
     category: 'wall-putty',
     image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=1200&h=800&fit=crop',
-    description: 'Perfect wall surface preparation'
+    description: 'Professional wall putty work for smooth finish'
   },
   {
     id: 9,
-    title: 'Furniture Polish',
+    title: 'Wall Putty Work in Progress',
+    category: 'wall-putty',
+    image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=1200&h=800&fit=crop',
+    description: 'Expert craftsmen applying premium quality putty'
+  },
+  {
+    id: 10,
+    title: 'Interior Painting Work',
+    category: 'interior-painting',
+    image: 'https://images.unsplash.com/photo-1560185007-c5ca9d2c014d?w=1200&h=800&fit=crop',
+    description: 'Professional interior painting with premium paints'
+  },
+  {
+    id: 11,
+    title: 'Painting Tools and Materials',
+    category: 'interior-painting',
+    image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=1200&h=800&fit=crop',
+    description: 'Quality painting equipment for flawless finish'
+  },
+  {
+    id: 12,
+    title: 'PU Polish on Wooden Furniture',
     category: 'pu-polish',
-    image: 'https://images.unsplash.com/photo-1581539250439-c96689b516dd?w=1200&h=800&fit=crop',
-    description: 'Restored wooden furniture'
+    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1200&h=800&fit=crop',
+    description: 'High-gloss PU polish protecting wooden surfaces'
+  },
+  {
+    id: 13,
+    title: 'Exterior Painting',
+    category: 'exterior-painting',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&h=800&fit=crop',
+    description: 'Weather-resistant exterior paint application'
+  },
+  {
+    id: 14,
+    title: 'Texture Work on Walls',
+    category: 'texture-work',
+    image: 'https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=1200&h=800&fit=crop',
+    description: 'Custom wall texture designs for unique interiors'
+  },
+  {
+    id: 15,
+    title: 'Hall Ceiling with Decorative Elements',
+    category: 'pop-ceiling',
+    image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&h=800&fit=crop',
+    description: 'Elegant hall ceiling with brown accents and lighting'
   }
 ]
 

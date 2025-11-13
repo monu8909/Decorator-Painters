@@ -14,6 +14,7 @@ const HeroSection = () => {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
+        {!videoError ? (
           <video
             autoPlay
             loop
@@ -25,22 +26,22 @@ const HeroSection = () => {
               videoLoaded ? 'opacity-100' : 'opacity-0'
             }`}
           >
-           
             <source
               src={videoUrl}
               type="video/mp4"
             />
           </video>
+        ) : null}
         
         {/* Fallback Image */}
-        {/* <div
+        <div
           className={`absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ${
             videoError || !videoLoaded ? 'opacity-100' : 'opacity-0'
           }`}
           style={{
             backgroundImage: `url(${fallbackImage})`
           }}
-        /> */}
+        />
         
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-navy-900/80 via-navy-800/70 to-navy-900/80 dark:from-black/70 dark:via-black/60 dark:to-black/70" />

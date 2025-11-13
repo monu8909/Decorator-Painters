@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import HeroSection from '../components/HeroSection'
 import ScrollAnimation from '../components/ScrollAnimation'
 import WavyDivider from '../components/WavyDivider'
@@ -7,7 +9,7 @@ import TestimonialCarousel from '../components/TestimonialCarousel'
 import FloatingCTA from '../components/FloatingCTA'
 import GetQuoteModal from '../components/GetQuoteModal'
 import { useState } from 'react'
-import { FiCheckCircle } from 'react-icons/fi'
+import { FiCheckCircle, FiArrowRight } from 'react-icons/fi'
 
 const services = [
   {
@@ -106,8 +108,102 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Why Choose Us */}
+      {/* Featured Gallery Section */}
       <section className="py-16 bg-white dark:bg-navy-900">
+        <div className="section-container">
+          <ScrollAnimation type="fade" className="text-center mb-12">
+            <h2 className="heading-primary text-gray-900 dark:text-white mb-4">
+              Our Recent Work
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              Showcasing our expertise in POP ceiling, wall finishing, and interior decoration
+            </p>
+          </ScrollAnimation>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {[
+              {
+                id: 1,
+                title: 'Modern POP Ceiling with LED',
+                image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop',
+                category: 'POP Ceiling',
+                description: 'Multi-layered geometric design with integrated lighting'
+              },
+              {
+                id: 2,
+                title: 'Elegant False Ceiling Design',
+                image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop',
+                category: 'POP Ceiling',
+                description: 'Sophisticated ceiling with cove lighting and decorative accents'
+              },
+              {
+                id: 3,
+                title: 'Wall Putty Application',
+                image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&h=600&fit=crop',
+                category: 'Wall Putty',
+                description: 'Smooth wall finishing for perfect paint base'
+              },
+              {
+                id: 4,
+                title: 'Professional Painting Work',
+                image: 'https://images.unsplash.com/photo-1560185007-c5ca9d2c014d?w=800&h=600&fit=crop',
+                category: 'Interior Painting',
+                description: 'Premium quality interior painting with attention to detail'
+              },
+              {
+                id: 5,
+                title: 'Contemporary Ceiling Design',
+                image: 'https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800&h=600&fit=crop',
+                category: 'POP Ceiling',
+                description: 'Modern geometric patterns with warm LED lighting'
+              },
+              {
+                id: 6,
+                title: 'Kitchen Ceiling with Integrated Lighting',
+                image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&h=600&fit=crop',
+                category: 'POP Ceiling',
+                description: 'Functional and beautiful ceiling design for modern kitchens'
+              }
+            ].map((item, index) => (
+              <ScrollAnimation key={item.id} type="zoom" delay={index * 0.1}>
+                <motion.div
+                  whileHover={{ y: -10, scale: 1.02 }}
+                  className="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer"
+                >
+                  <div className="relative h-64 overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                      <span className="inline-block px-3 py-1 bg-primary-600 text-white text-sm font-semibold rounded-full mb-2">
+                        {item.category}
+                      </span>
+                      <h3 className="text-white font-bold text-lg mb-1">{item.title}</h3>
+                      <p className="text-white/90 text-sm">{item.description}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              </ScrollAnimation>
+            ))}
+          </div>
+
+          <ScrollAnimation type="slideUp" className="text-center">
+            <Link
+              to="/gallery"
+              className="inline-flex items-center text-primary-600 dark:text-primary-400 font-semibold text-lg hover:text-primary-700 dark:hover:text-primary-300 transition-colors"
+            >
+              View Full Gallery
+              <FiArrowRight className="ml-2" />
+            </Link>
+          </ScrollAnimation>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-16 bg-gray-50 dark:bg-navy-900/50">
         <div className="section-container">
           <ScrollAnimation type="fade" className="text-center mb-12">
             <h2 className="heading-primary text-gray-900 dark:text-white mb-4">
@@ -118,7 +214,7 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {whyChooseUs.map((item, index) => (
               <ScrollAnimation key={index} type="zoom" delay={index * 0.1}>
-                <div className="bg-gray-50 dark:bg-navy-800 p-6 rounded-xl flex items-center space-x-4">
+                <div className="bg-white dark:bg-navy-800 p-6 rounded-xl flex items-center space-x-4 shadow-md hover:shadow-lg transition-shadow">
                   <FiCheckCircle className="text-primary-600 dark:text-primary-400 flex-shrink-0" size={24} />
                   <span className="text-gray-700 dark:text-gray-300 font-medium">{item}</span>
                 </div>

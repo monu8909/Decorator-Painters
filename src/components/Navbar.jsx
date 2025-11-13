@@ -77,7 +77,8 @@ const Navbar = () => {
               isScrolled
                 ? 'text-primary-600 dark:text-primary-400'
                 : 'text-white dark:text-gray-100'
-            } focus:outline-none focus:ring-2 focus:ring-primary-500 rounded`}
+            } 
+            `}
             aria-label="Decorator & Painters Home"
           >
             Decorator & Painters
