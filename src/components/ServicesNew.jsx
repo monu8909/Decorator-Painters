@@ -59,17 +59,7 @@ const ServicesNew = () => {
       },
       features: ['Textured finishes', 'Modern designs', 'Custom patterns', 'Smooth application']
     },
-    {
-      id: 6,
-      title: 'Complete Interior Finishing',
-      description: 'End-to-end interior finishing solutions for your home',
-      image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop',
-      beforeAfter: {
-        before: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=300&h=200&fit=crop',
-        after: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&h=200&fit=crop'
-      },
-      features: ['Full service', 'Quality materials', 'Expert team', 'Timely completion']
-    }
+   
   ]
 
   const containerVariants = {
