@@ -106,7 +106,6 @@ const Navbar = () => {
               </Link>
             ))}
             
-            {/* Dark Mode Toggle */}
             <button
               onClick={toggleTheme}
               className={`p-2 rounded-lg transition-colors ${
@@ -120,7 +119,6 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-2">
             <button
               onClick={toggleTheme}
@@ -147,7 +145,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         <motion.div
           initial={false}
           animate={{

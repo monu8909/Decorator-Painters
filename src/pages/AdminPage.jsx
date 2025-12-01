@@ -4,15 +4,19 @@ import { FiDownload, FiRefreshCw, FiAlertCircle } from 'react-icons/fi'
 import jsPDF from 'jspdf'
 import html2canvas from 'html2canvas'
 
+import AdminPayroll from './AdminPayroll'
+
 const AdminPage = () => {
   const [token, setToken] = useState('')
   const [bookings, setBookings] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [activeTab, setActiveTab] = useState('bookings') // 'bookings' or 'payroll'
 
   useEffect(() => {
     // Check if token is stored in localStorage
+     localStorage.setItem('adminToken',123)
     const storedToken = localStorage.getItem('adminToken')
     if (storedToken) {
       setToken(storedToken)
@@ -184,7 +188,7 @@ const AdminPage = () => {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
-          <h1 className="text-2xl font-bold mb-6 text-center">Admin Login</h1>
+          <h1 className="text-2xl font-bold mb-6 text-center text-black">Admin Login</h1>
           <form onSubmit={handleTokenSubmit} className="space-y-4">
             <div>
               <label htmlFor="adminToken" className="block text-sm font-medium text-gray-700 mb-2">
@@ -220,99 +224,127 @@ const AdminPage = () => {
       <div className="section-container">
         <div className="flex justify-between items-center mb-6">
           <h1 className="heading-primary">Admin Dashboard</h1>
-          <button
-            onClick={() => fetchBookings(token)}
-            disabled={loading}
-            className="btn-secondary flex items-center gap-2"
-          >
-            <FiRefreshCw className={loading ? 'animate-spin' : ''} />
-            Refresh
-          </button>
+          <div className="flex gap-4">
+            <div className="flex bg-white rounded-lg p-1 shadow-sm border">
+              <button
+                onClick={() => setActiveTab('bookings')}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                  activeTab === 'bookings' ? 'bg-primary-50 text-primary-700' : 'text-gray-600 hover:bg-gray-50'
+                }`}
+              >
+                Bookings
+              </button>
+              <button
+                onClick={() => setActiveTab('payroll')}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                  activeTab === 'payroll' ? 'bg-primary-50 text-primary-700' : 'text-gray-600 hover:bg-gray-50'
+                }`}
+              >
+                Payroll
+              </button>
+            </div>
+            {activeTab === 'bookings' && (
+              <button
+                onClick={() => fetchBookings(token)}
+                disabled={loading}
+                className="btn-secondary flex items-center gap-2"
+              >
+                <FiRefreshCw className={loading ? 'animate-spin' : ''} />
+                Refresh
+              </button>
+            )}
+          </div>
         </div>
 
-        {error && (
-          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2">
-            <FiAlertCircle className="text-red-600" />
-            <p className="text-red-700">{error}</p>
-          </div>
-        )}
-
-        {loading ? (
-          <div className="text-center py-12">
-            <p className="text-gray-600">Loading bookings...</p>
-          </div>
-        ) : bookings.length === 0 ? (
-          <div className="text-center py-12 bg-white rounded-lg shadow">
-            <p className="text-gray-600">No bookings found.</p>
-          </div>
+        {activeTab === 'payroll' ? (
+          <AdminPayroll />
         ) : (
-          <div className="bg-white rounded-lg shadow overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Date
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Name
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Contact
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Address
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Rooms
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Status
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Actions
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {bookings.map((booking) => (
-                    <tr key={booking.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {new Date(booking.createdAt).toLocaleDateString()}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                        {booking.name}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        <div>{booking.email}</div>
-                        <div className="text-xs">{booking.phone}</div>
-                      </td>
-                      <td className="px-6 py-4 text-sm text-gray-500 max-w-xs truncate">
-                        {booking.address}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {booking.numberOfRooms || 'N/A'}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                          {booking.status || 'pending'}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <button
-                          onClick={() => exportToPDF(booking)}
-                          className="text-primary-600 hover:text-primary-900 flex items-center gap-1 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded"
-                        >
-                          <FiDownload />
-                          Export PDF
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
+          <>
+            {error && (
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2">
+                <FiAlertCircle className="text-red-600" />
+                <p className="text-red-700">{error}</p>
+              </div>
+            )}
+
+            {loading ? (
+              <div className="text-center py-12">
+                <p className="text-gray-600">Loading bookings...</p>
+              </div>
+            ) : bookings.length === 0 ? (
+              <div className="text-center py-12 bg-white rounded-lg shadow">
+                <p className="text-gray-600">No bookings found.</p>
+              </div>
+            ) : (
+              <div className="bg-white rounded-lg shadow overflow-hidden">
+                <div className="overflow-x-auto">
+                  <table className="min-w-full divide-y divide-gray-200">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Date
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Name
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Contact
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Address
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Rooms
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Status
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Actions
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                      {bookings.map((booking) => (
+                        <tr key={booking.id} className="hover:bg-gray-50">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            {new Date(booking.createdAt).toLocaleDateString()}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                            {booking.name}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            <div>{booking.email}</div>
+                            <div className="text-xs">{booking.phone}</div>
+                          </td>
+                          <td className="px-6 py-4 text-sm text-gray-500 max-w-xs truncate">
+                            {booking.address}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            {booking.numberOfRooms || 'N/A'}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                              {booking.status || 'pending'}
+                            </span>
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                            <button
+                              onClick={() => exportToPDF(booking)}
+                              className="text-primary-600 hover:text-primary-900 flex items-center gap-1 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded"
+                            >
+                              <FiDownload />
+                              Export PDF
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>
