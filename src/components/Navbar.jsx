@@ -60,7 +60,7 @@ const Navbar = () => {
 
   return (
     <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300  bg-transparent dark:bg-navy-900/95 backdrop-blur-md shadow-lg`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300  bg-white dark:bg-navy-900/95 backdrop-blur-md shadow-lg`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
@@ -106,7 +106,7 @@ const Navbar = () => {
               onClick={toggleTheme}
               className={`p-2 rounded-lg transition-colors ${isScrolled
                 ? 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-navy-800'
-                : 'text-white dark:text-gray-100 hover:bg-white/10'
+                : 'text-gray-700 dark:text-gray-100 hover:bg-white/10'
                 } focus:outline-none focus:ring-2 focus:ring-primary-500`}
               aria-label="Toggle dark mode"
             >

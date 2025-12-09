@@ -1,18 +1,32 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import ScrollAnimation from '../components/ScrollAnimation'
 import WavyDivider from '../components/WavyDivider'
 import FloatingCTA from '../components/FloatingCTA'
 import GetQuoteModal from '../components/GetQuoteModal'
 import { FiPhone, FiMail, FiMapPin, FiClock, FiSend } from 'react-icons/fi'
+import { API } from '../apiconfig/Apiconfig'
 
 const Contact = () => {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false)
+  const [token, setToken] = useState('')
+
+  useEffect(() => {
+    // Check if token is stored in localStorage
+    localStorage.setItem('adminToken', 123)
+    const storedToken = localStorage.getItem('adminToken')
+    if (storedToken) {
+      setToken(storedToken)
+    }
+  }, [])
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    subject: '',
-    message: ''
+    address: '',
+    serviceType: '',
+    preferredStartDate: ''
   })
 
   const handleChange = (e) => {
@@ -22,17 +36,26 @@ const Contact = () => {
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('Form submitted:', formData)
-    alert('Thank you! We will contact you soon.')
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: ''
-    })
+    try {
+      await axios.post(API.CREATE_BOOKING, formData, {
+        headers: {
+          'x-admin-token': token
+        }
+      });
+      alert('Booking request submitted successfully! We will contact you soon.')
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        address: '',
+        serviceType: '',
+        preferredStartDate: ''
+      })
+    } catch (error) {
+      alert(error.response?.data?.message || 'Failed to submit booking. Please try again.')
+    }
   }
 
   const contactInfo = [
@@ -119,10 +142,10 @@ const Contact = () => {
                     Send us a Message
                   </h2>
                   <p className="text-gray-600 dark:text-gray-400 mb-8">
-                    Fill out the form below and we'll get back to you as soon as possible. 
+                    Fill out the form below and we all get back to you as soon as possible.
                     You can also call us directly or use WhatsApp for immediate assistance.
                   </p>
-                  
+
                   <div className="space-y-4">
                     <button
                       onClick={() => window.location.href = 'tel:+919876543210'}
@@ -131,7 +154,7 @@ const Contact = () => {
                       <FiPhone size={20} />
                       <span>Call Now</span>
                     </button>
-                    
+
                     <button
                       onClick={() => window.open('https://wa.me/919876543210', '_blank')}
                       className="w-full px-6 py-4 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition-all transform hover:scale-105 flex items-center justify-center space-x-2"
@@ -194,33 +217,51 @@ const Contact = () => {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Subject *
+                      Address *
                     </label>
-                    <input
-                      type="text"
-                      name="subject"
-                      value={formData.subject}
+                    <textarea
+                      name="address"
+                      value={formData.address}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-navy-700 bg-white dark:bg-navy-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
-                      placeholder="What is this regarding?"
-                    />
+                      rows="3"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-navy-700 bg-white dark:bg-navy-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all resize-none"
+                    ></textarea>
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Message *
+                      Service Type *
                     </label>
-                    <textarea
-                      name="message"
-                      value={formData.message}
+                    <select
+                      name="serviceType"
+                      value={formData.serviceType}
                       onChange={handleChange}
-                      required
-                      rows="5"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-navy-700 bg-white dark:bg-navy-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all resize-none"
-                      placeholder="Tell us about your project..."
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-navy-700 bg-white dark:bg-navy-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+                    >
+                      <option value="">Select Service...</option>
+                      <option value="Interior Painting">Interior Painting</option>
+                      <option value="Exterior Painting">Exterior Painting</option>
+                      <option value="Wall Preparation & Repairs">Wall Preparation & Repairs</option>
+                      <option value="Color Consultation">Color Consultation</option>
+                      <option value="Cleanup & Disposal">Cleanup & Disposal</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      Preferred Start Date
+                    </label>
+                    <input
+                      type="date"
+                      name="preferredStartDate"
+                      value={formData.preferredStartDate}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-navy-700 bg-white dark:bg-navy-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
                     />
                   </div>
+
+
 
                   <button
                     type="submit"
