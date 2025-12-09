@@ -127,7 +127,7 @@ const Navbar = () => {
             </button>
             <button
               type="button"
-              className={`p-2 rounded-md transition-colors ${isScrolled ? 'text-black dark:text-gray-300' : 'text-black dark:text-gray-100'
+              className={`p-2 rounded-lg transition-colors ${isScrolled ? 'text-black dark:text-gray-300' : 'text-black dark:text-gray-100'
                 } hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500`}
               onClick={toggleMenu}
               aria-expanded={isMenuOpen}
