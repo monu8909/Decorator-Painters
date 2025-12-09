@@ -11,6 +11,7 @@ const Services = lazy(() => import('./pages/Services'))
 const Gallery = lazy(() => import('./pages/Gallery'))
 const Contact = lazy(() => import('./pages/Contact'))
 const AdminPage = lazy(() => import('./pages/AdminPage'))
+const BookingPage = lazy(() => import('./pages/BookingPage'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
 // Loading component
@@ -143,6 +144,22 @@ const AnimatedRoutes = () => {
             >
               <Suspense fallback={<PageLoader />}>
                 <AdminPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/book-now"
+          element={
+            <motion.div
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<PageLoader />}>
+                <BookingPage />
               </Suspense>
             </motion.div>
           }
