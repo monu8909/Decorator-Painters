@@ -267,7 +267,7 @@ const AdminPage = () => {
       <div className="section-container">
         <div className="flex justify-between items-center mb-6 flex-wrap">
           <h1 className="heading-primary">Admin Dashboard</h1>
-          <div className="flex gap-4">
+          <div className="flex gap-4 flex-wrap">
             <div className="flex bg-white rounded-lg p-1 shadow-sm border">
               <button
                 onClick={() => setActiveTab('bookings')}

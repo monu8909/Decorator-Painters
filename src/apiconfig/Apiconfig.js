@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = 'https://decorator-and-painters-backend-fa45.onrender.com'
 
 export const API = {
     USER_REGISTER: `${API_BASE_URL}/api/auth/register-worker`,
