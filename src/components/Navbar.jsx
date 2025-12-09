@@ -104,10 +104,10 @@ const Navbar = () => {
 
             <button
               onClick={toggleTheme}
-              className={`p-2 rounded-lg transition-colors ${isScrolled
-                ? 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-navy-800'
-                : 'text-gray-700 dark:text-gray-100 hover:bg-white/10'
-                } focus:outline-none focus:ring-2 focus:ring-primary-500`}
+              className={`text-2xl font-bold transition-colors ${isScrolled
+                ? 'text-black dark:text-primary-400'
+                : 'text-black dark:text-gray-100'
+                } focus:outline-none focus:ring-2 focus:ring-primary-500 rounded px-2`}
               aria-label="Toggle dark mode"
             >
               {isDark ? <FiSun size={20} /> : <FiMoon size={20} />}
@@ -118,8 +118,8 @@ const Navbar = () => {
             <button
               onClick={toggleTheme}
               className={`p-2 rounded-lg transition-colors ${isScrolled
-                ? 'text-gray-700 dark:text-gray-300'
-                : 'text-white dark:text-gray-100'
+                ? 'text-black dark:text-gray-300'
+                : 'text-black dark:text-gray-100'
                 } focus:outline-none focus:ring-2 focus:ring-primary-500`}
               aria-label="Toggle dark mode"
             >
@@ -127,7 +127,7 @@ const Navbar = () => {
             </button>
             <button
               type="button"
-              className={`p-2 rounded-md transition-colors ${isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white dark:text-gray-100'
+              className={`p-2 rounded-md transition-colors ${isScrolled ? 'text-black dark:text-gray-300' : 'text-black dark:text-gray-100'
                 } hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500`}
               onClick={toggleMenu}
               aria-expanded={isMenuOpen}
